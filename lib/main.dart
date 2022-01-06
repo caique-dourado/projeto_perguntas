@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 main() => runApp(PerguntaApp());
 
 class PerguntaApp extends StatelessWidget {
+  var perguntaSelecionada = 0;
   void responder() {
-    print('Pergunta respondida!');
+    perguntaSelecionada++;
+    print(perguntaSelecionada);
   }
 
   @override
@@ -20,7 +22,7 @@ class PerguntaApp extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          Text(perguntas[0]),
+          Text(perguntas[perguntaSelecionada]),
           ElevatedButton(onPressed: responder, child: const Text('Resposta 1')),
           ElevatedButton(onPressed: responder, child: const Text('Resposta 2')),
           ElevatedButton(onPressed: responder, child: const Text('Resposta 3'))
