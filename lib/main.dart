@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-main() => runApp(ProjetoPerguntas());
+main() => runApp(PerguntaApp());
 
-class ProjetoPerguntas extends StatelessWidget {
+class PerguntaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
