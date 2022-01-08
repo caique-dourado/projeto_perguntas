@@ -10,29 +10,35 @@ class _PerguntaAppState extends State<PerguntaApp> {
     setState(() {
       _perguntaSelecionada++;
     });
-
-    print('Pergunta respondida!');
   }
 
   @override
   Widget build(BuildContext context) {
-    final List<String> perguntas = [
-      'Qual é a sua cor favorita?',
-      'Qual é o seu animal favorito?'
+    final List<Map<String, Object>> perguntas = [
+      {
+        'texto': 'Qual é a sua cor favorita?',
+        'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco']
+      },
+      {
+        'texto': 'Qual é o seu animal favorito?',
+        'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leao']
+      },
+      {
+        'texto': 'Qual é o seu instrutor favorito?',
+        'respostas': ['Maria', 'João', 'Leo', 'Pedro']
+      },
     ];
+
+    List<String> resposta = perguntas[_perguntaSelecionada].cast()['respostas'];
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
         title: const Text('Perguntas'),
       ),
-      body: Column(
-        children: <Widget>[
-          Questao(perguntas[_perguntaSelecionada]),
-          Resposta('Resposta 1', _responder),
-          Resposta('Resposta 2', _responder),
-          Resposta('Resposta 3', _responder),
-        ],
-      ),
+      body: Column(children: <Widget>[
+        Questao(perguntas[_perguntaSelecionada]['texto'].toString()),
+        ...resposta.map((t) => Resposta(t, _responder)).toList()
+      ]),
     ));
   }
 }
